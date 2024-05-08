@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Stock Market Prediction</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid position-relative d-flex p-0">
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar navbar-dark">
+                <a href="../" class="navbar-brand mx-4 mb-3" style="background-color:#295ded;">
+                    <h2 class="text-primary">Stock Prophet</h2>
+                </a>
+                
+                
+                <div class="navbar-nav w-100" style="background-color:#295ded;">
+                    <a href="../" class="nav-item nav-link"><i class="fa fa-home me-2"></i>Home Page</a>
+                    <a href="/graphical_dashboard" class="nav-item nav-link"><i class="fa fa-search me-2"></i>Graphical Dashboard</a>
+                    <a href="/search" class="nav-item nav-link active"><i class="fa fa-search me-2"></i>Price Oracle</a>
+                    <a href="/ticker" class="nav-item nav-link"><i class="fa fa-list-alt me-2"></i>Ticker Info</a>
+                </div>
+            </nav>
+        </div>
+
+        <div class="content">
+            <div class="container-fluid"style="background-image: linear-gradient(to right, #1ccaf1, #0488cf);">
+                <div class="row align-items-center justify-content-center" style="min-height: 100vh;">
+                    <div class="">
+                        <div class="rounded p-4 p-sm-5 my-4 mx-3">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <h4 style="color: #050404;">
+                                    Price Oracle -
+                                </h4>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input style="background-color:#f4f5f8;" type="text" class="form-control" id="tickerinp" placeholder="Ticker Name" name="ticker" autocomplete="on" required>
+                                <label for="tickerinp" style="color: #050404;">Enter the stock ticker you want to run the prediction. Please enter the Stock ticker in capital. </label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn_style" onclick="LoadURL()">Predict</button>
+                            <script type="text/javascript">
+                                function LoadURL() {
+                                    var ticker = document.getElementById("tickerinp").value;
+                                    var server = window.location.origin;
+                                    var path = "/predict/" + ticker + "/" + "100";
+                                    var url = server + path;
+                                    window.location.href = url;
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/chart/chart.min.js' %}"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus/js/moment.min.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

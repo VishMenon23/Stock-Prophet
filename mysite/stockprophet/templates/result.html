@@ -1,0 +1,142 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Stock Market Prediction</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid position-relative d-flex p-0">
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar navbar-dark">
+                <a href="../" class="navbar-brand mx-4 mb-3" style="background-color:#295ded;">
+                    <h2 class="text-primary">Stock Prophet</h2>
+                </a>
+                
+                
+                <div class="navbar-nav w-100" style="background-color:#295ded;">
+                    <a href="/" class="nav-item nav-link"><i class="fa fa-home me-2"></i>Home Page</a>
+                    <a href="/graphical_dashboard" class="nav-item nav-link"><i class="fa fa-search me-2"></i>Graphical Dashboard</a>
+                    <a href="/search" class="nav-item nav-link active"><i class="fa fa-search me-2"></i>Price Oracle</a>
+                    <a href="/ticker" class="nav-item nav-link"><i class="fa fa-list-alt me-2"></i>Ticker Info</a>
+                </div>
+            </nav>
+        </div>
+        <div class="content" style="background-image: linear-gradient(to right, #1ccaf1, #0488cf);">
+            <div class="col-sm-12 col-xl-12">
+                <div class=" text-center rounded p-4" style="margin-top: 20px;">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h1 class="text-dark">Information Regarding {{Name}}</h1>
+                    </div>
+                    <p style="color: #080909;">
+                        To see all details regarding {{Name}}, click this link - 
+                        <a href="https://finance.yahoo.com/quote/{{ticker_value}}?p={{ticker_value}}" style="color: #1f0cea;">Show More</a>
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover text-dark">
+                            <tbody>
+                                <tr>
+                                    <td>Symbol</td>
+                                    <td>{{Symbol}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>{{Name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Current Close Value</td>
+                                    <td>{{table_Close}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Country</td>
+                                    <td>{{Country}}</td>
+                                </tr>
+                                <tr>
+                                    <td>IPO Year</td>
+                                    <td>{{IPO_Year}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Sector</td>
+                                    <td>{{Sector}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-xl-12">
+                            <div class="rounded p-4">
+                                <h1 class="text-dark">
+                                LSTM Predictor - 
+                                </h1>
+                                <p class="text-dark">
+                                    Long Short-Term Memory (LSTM) networks are a specialized type of recurrent neural network (RNN) particularly well-suited for sequence prediction problems. In the context of stock price predictions, LSTMs can effectively capture the time dependencies in historical stock price data, allowing for predictions that consider long-term temporal patterns. My LSTM model processes data by first fetching stock prices for the top tech company tickers (AAPL, AMZN, NVDA, MSFT and GOOG) using the yfinance library and then scaling the 'Close' prices to a normalized range using MinMaxScaler. This normalization helps the model learn more efficiently.
+                                </p>
+                                <p class="text-dark">
+                                    The network architecture comprises multiple LSTM layers interspersed with Dropout layers. Dropout layers are used to prevent overfitting by randomly setting a fraction of the input units to 0 at each update during training. The model employs three LSTM layers, each with 50 units: the first two LSTM layers are designed to return sequences, allowing for further sequential processing, while the final LSTM layer consolidates the learned features into a single vector, which is then passed to a Dense layer that outputs the predicted stock price. The model is trained with the Adam optimizer and mean squared error loss, iterating over the scaled data to minimize prediction errors on the training set, thus learning to forecast future stock prices based on past values. This makes LSTMs particularly adept for financial time series forecasting where past price trends can inform future price movements.
+                                </p>
+                                <h5 class="text-dark">Predicted Stock Closing Price : $ {{AvgPrice}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+                <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h1 class="text-dark">Past trend for the Close price and Volume traded of {{ticker_value}}</h1>
+                            </div>
+                            <p class="text-dark">This chart provides a visual analysis of both the trading activity (volume) and the price performance (close) of a stock over time. It's a common type of chart used by traders and analysts to assess market sentiment and price trends.</p>
+                            <p class="text-dark">The blue vertical bars represent the trading volume of a stock over time. The height of each bar indicates the amount of stock that was traded during a specific time period. A taller bar signifies a higher volume of trades.</p>
+                            <p class="text-dark">Overlaying the volume bars is a red line graph which indicates the closing price of the stock over the same time frame. The closing price is plotted on a separate scale, represented on the right vertical axis.</p>
+                            {% block Left_Plot %}
+                                {% autoescape off %}
+                                    {{ volume_close_plot }}
+                                {% endautoescape %}
+                            {% endblock Left_Plot %}
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/chart/chart.min.js' %}"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus/js/moment.min.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

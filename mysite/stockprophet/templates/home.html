@@ -1,0 +1,141 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Stock Market Prediction</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid position-relative d-flex p-0">
+        <div class="sidebar pe-4 pb-3" >
+            <nav class="navbar  navbar-dark" >
+                <a href="../" class="navbar-brand mx-4 mb-3" style="background-color:#295ded;">    
+                    <h2 class="text-primary" >Stock Prophet</h2>
+                </a>
+                
+                
+                <div class="navbar-nav w-100" style="background-color:#295ded;">
+                    <a href="#" class="nav-item nav-link active"><i class="fa fa-home me-2"></i>Home Page</a>
+                    <a href="/graphical_dashboard" class="nav-item nav-link"><i class="fa fa-search me-2"></i>Graphical Dashboard</a>
+                    <a href="/search" class="nav-item nav-link"><i class="fa fa-search me-2"></i>Price Oracle</a>
+                    <a href="/ticker" class="nav-item nav-link"><i class="fa fa-list-alt me-2"></i>Stock Tickers</a>
+                </div>
+            </nav>
+        </div>
+        <div class="content">
+            <div class="container-fluid pt-4 px-4" style="background-image: linear-gradient(to right, #1ccaf1, #0488cf);">    
+                <div>
+                    <div>
+                        <div style="color: #0e0d0d;">
+                            <h3 style="color: #0e0d0d;">INTRO</h3>
+                            <p>
+                                Traditionally, stock market analysis has been the domain of financial experts, requiring a deep understanding of market trends, economic indicators, and complex mathematical models. However, with the advent of machine learning and data science, the opportunity to distill this complexity into actionable insights has never been more attainable. Recognizing this, I set out to create Stock Prophet — a platform that bridges the gap between sophisticated financial analysis and everyday investors.
+                            </p>
+                            <p>
+                                At the core of my solution is the service for stock price prediction. The service is built upon a sophisticated back-end infrastructure that employs Long Short-Term Memory (LSTM) network models. 
+                            </p>
+                            <p>
+                                The foundational hypothesis is that stock prices, despite their apparent market volatility, follow patterns that can be discerned from historical data through the application of LSTM networks and additional machine learning models. By integrating these models with high-quality, detailed tech data from reputable sources (such as Yahoo Finance), my application aims to uncover these patterns, offering predictive insights that were previously accessible only to professional analysts.
+                            </p>
+                            <p>
+                                The solution analyzes the interconnectivity within the tech sector, understanding that movements in major indices and changes within leading companies can have a ripple effect across the sector.
+                            </p>
+                            <p>
+                                The LSTM is trained on the stocks from the top 5 tech companies. The model learns from the patterns in the historical price movements of these specific stocks. This training encapsulates general patterns that are reflective of the tech sector, broader market trends, or the behavior of stock prices in response to various economic signals. Stocks often move in response to broader market trends. If the model has learned these trends from the big tech companies, which are significant market movers, it could apply that knowledge to predict other stocks that are influenced by similar economic and market forces. Tech stocks often move together as a sector. By learning from multiple big players within the tech industry, the model might capture sector-specific trends that are applicable to other tech companies.
+                            </p>
+                            <h3 style="color: #0e0d0d;">Reason for Hypothesis </h3>
+                            <p>
+                                In the realm of finance, the stock market serves as a barometer for the economic health of industries and individual companies. Within this intricate ecosystem, the technology sector stands out for its rapid innovation, growth, and significant influence on global markets. Leading the charge are tech behemoths like Apple, Google (Alphabet), Microsoft, Amazon, and Nvidia, whose movements on the stock market create ripples that affect a wide array of other technology companies.
+                            </p>
+                            <p>
+                                My project delves into how these industry leaders shape the stock price values of other tech entities and the underpinnings of their influential roles.
+                            </p>
+                            <p>
+                                Some examples of why these tech giants influence the entire market - 
+                            </p>
+                            <h6 style="color: #0e0d0d;">
+                                Cloud domain (Google, Microsoft and Amazon) – 
+                            </h6>
+                            <p>
+                            Google Cloud, Amazon Web Services (AWS), and Microsoft Azure are the backbone of countless tech companies, ranging from startups to established firms. These cloud platforms provide essential services such as computing power, data storage, and various SaaS (Software as a Service) solutions, enabling businesses to scale without the need for substantial capital investment in physical infrastructure.
+                            The dependency on these services means that any changes in pricing, service availability, or technological advancements by these cloud providers can have immediate and far-reaching effects on the operational costs and capabilities of dependent companies. Thus, the financial performance and strategic directions of Amazon, Google, and Microsoft can significantly impact the stock prices of companies that rely on their cloud services.
+                            </p>
+                            <h6 style="color: #0e0d0d;">
+                                Nvidia's Role in AI and Computing – 
+                            </h6>
+                            <p>
+                                Nvidia has emerged as another central figure, primarily due to its dominance in the GPU market, which is crucial for AI and machine learning computations. As AI technologies become more integrated into various products and services, companies that develop or utilize AI solutions are increasingly dependent on Nvidia's hardware and software ecosystems. Nvidia's innovations, pricing strategies, and supply chain dynamics can thus have a considerable influence on the valuation and performance of a broad spectrum of tech companies, especially those heavily invested in AI and machine learning.
+                            </p>
+                            <h6 style="color: #0e0d0d;">
+                                Analysis using Correlation matrix –
+                            </h6>
+                            <p>
+                                Correlation measures the degree to which two variables move in relation to each other. In finance, it is often used to determine how closely the stock prices of two companies are related. The correlation coefficient ranges from -1 to 1.
+                            </p>
+                            <ul>
+                                <li>
+                                    A correlation coefficient of 1 implies a perfect positive correlation, meaning that as one stock price moves, either up or down, the other stock price moves in the same direction by a proportional amount.
+                                </li>
+                                <li>
+                                    A correlation coefficient of -1 implies a perfect negative correlation, meaning that if one stock price increases, the other decreases by a proportional amount, and vice versa.
+                                </li>
+                                <li>
+                                    A correlation coefficient close to 0 implies little to no linear relationship between the movements of the two stock prices.
+                                </li>
+                            </ul>
+                            <p>
+                                Fluor Corp is an American multinational engineering and construction firm. I have used this company along with the tech companies to show how the correlation effects a different domain other than tech.
+                            </p>
+                            <p>
+                                Below is the correlation matrix I have generated using the closing prices of – AAPL (Apple), GOOGL (Google), MSFT (Microsoft), AMZN (Amazon), NVDA (Nvidia), SPY (SPDR S&P 500 ETF Trust), QQQ (NASDAQ) and FLR (Fluor Corp).
+                            </p>
+                            <p>
+                                <img src="../static/image/Heat_Map.png" alt="description of the image" width="500" height="500">
+                            </p>
+                            <p>
+                                From this matrix, we can derive several insights:
+                            </p>
+                            <ul>
+                                <li>High Positive Correlation within Tech Stocks and Indices: There is a generally high positive correlation among the tech stocks (AAPL, AMZN, GOOGL, MSFT, NVDA) and the indices (QQQ, SPY). This suggests that these stocks often move in the same direction as each other and with the broader market, represented here by QQQ (NASDAQ-100) and SPY (S&P 500).</li>
+                                <li>Highest Correlations with Indices: Stocks like AAPL, MSFT, and NVDA have very high correlations with QQQ and SPY. This is expected as these companies have significant weights in these indices, and movements in these stocks can have a strong influence on the index movements.</li>
+                                <li>Comparison between Indices: QQQ, which represents the NASDAQ-100, has a higher correlation with individual tech stocks compared to SPY. This makes sense since QQQ is more tech-focused, whereas SPY represents a broader range of sectors.</li>
+                                <li>Lower Correlations: Fluor Corp (FLR) has a lower correlation with other stocks and indices compared to the rest of the group. This could be due to the fact that FLR is a non-tech company, possibly being influenced by different factors than pure tech companies. But the fact that it is a positive correlation underscores the fact that the tech giants play a huge role in the entire economic landscape.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus/js/moment.min.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
