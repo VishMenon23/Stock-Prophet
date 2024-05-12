@@ -28,3 +28,7 @@ Data is primarily sourced from Yahoo Finance, covering top tech companies like G
 The backend of Stock Prophet is built on Django with LSTM models developed using TensorFlow's Keras API. The application also uses the Plotly library for rendering interactive charts and graphs.
 
 ## Screenshots of Website - 
+<img width="1440" alt="1_git" src="https://github.com/VishMenon23/Stock-Prophet/assets/122495446/649084bb-aa35-4d17-bd97-fe4323d77a6a">
+<img width="1440" alt="2_git" src="https://github.com/VishMenon23/Stock-Prophet/assets/122495446/52348290-dfa1-466d-b8b7-0918b2485ad0">
+<img width="1440" alt="3_git" src="https://github.com/VishMenon23/Stock-Prophet/assets/122495446/ab520182-7e9f-46c3-a7d2-ce3462eb5f76">
+<img width="1440" alt="4_git" src="https://github.com/VishMenon23/Stock-Prophet/assets/122495446/ad89d88a-80f2-44ba-bcc0-bed0df20f95a">
